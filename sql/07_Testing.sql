@@ -1,9 +1,8 @@
-/* ============================================================
-   File        : 07_Testing.sql
-   Purpose     : Quick sanity checks after running the scripts
-                 above -- row counts and a spot check on the
-                 transaction procedure
-   ============================================================ */
+/* =============================================================================
+   File : 07_Testing.sql
+   Purpose : Quick sanity checks after running the scripts 
+               above -- row counts and a spot check on the transaction procedure
+   ============================================================================== */
 
 USE LogisticsFleetDB;
 GO
