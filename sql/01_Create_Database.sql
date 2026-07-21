@@ -1,8 +1,8 @@
-/* ============================================================
-   File        : 01_Create_Database.sql
-   Purpose     : Create the LogisticsFleetDB database
-   Server      : Microsoft SQL Server (T-SQL)
-   ============================================================ */
+/* ==============================================
+   File : 01_Create_Database.sql
+   Purpose : Create the LogisticsFleetDB database
+   Server : Microsoft SQL Server (T-SQL)
+   =================+======================= */
 
 USE master;
 GO
