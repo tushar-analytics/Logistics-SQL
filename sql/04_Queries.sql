@@ -1,23 +1,16 @@
-/* ============================================================
+/* ==================================================
    File        : 04_Queries.sql
-   Purpose     : Analytical / reporting queries for the
-                 Logistics Fleet Operations database
-   ============================================================ */
+   ================================================ */
 
 USE LogisticsFleetDB;
 GO
 
--- ------------------------------------------------------------
 -- 1. Regional Outbound Logistics Tracker
 --    Trips to Delhi or Mumbai between Jan 2025 and Jun 2026
--- ------------------------------------------------------------
+   
 SELECT
-    T.TripID,
-    V.VehicleNumber,
-    T.SourceCity,
-    T.DestinationCity,
-    T.TripDate,
-    T.FuelAdvanceAmount
+    T.TripID, V.VehicleNumber, T.SourceCity, T.DestinationCity,
+    T.TripDate, T.FuelAdvanceAmount
 FROM Trips T
 INNER JOIN Vehicles V
     ON T.VehicleID = V.VehicleID
@@ -26,16 +19,13 @@ WHERE T.DestinationCity IN ('Delhi', 'Mumbai')
 ORDER BY T.TripDate;
 GO
 
--- ------------------------------------------------------------
 -- 2. Failed Payment Audit
 --    All expenses where PaymentStatus = 'Failed'
--- ------------------------------------------------------------
+   
 SELECT
     E.ExpenseID,
-    V.VehicleNumber,
-    E.ExpenseCategory,
-    E.Amount,
-    T.TripDate
+    V.VehicleNumber, E.ExpenseCategory, 
+    E.Amount, T.TripDate
 FROM Expenses E
 INNER JOIN Trips T
     ON E.TripID = T.TripID
@@ -45,9 +35,9 @@ WHERE E.PaymentStatus = 'Failed'
 ORDER BY T.TripDate;
 GO
 
--- ------------------------------------------------------------
+
 -- 3. Top 3 highest successful expenses
--- ------------------------------------------------------------
+
 SELECT TOP 3
     ExpenseID,
     TripID,
@@ -58,11 +48,10 @@ WHERE PaymentStatus = 'Success'
 ORDER BY Amount DESC;
 GO
 
--- ------------------------------------------------------------
 -- 4. Monthly MIS
 --    Grouped by VehicleType and Month (YYYY-MM)
 --    Total trips and total successful expense amount
--- ------------------------------------------------------------
+
 SELECT
     V.VehicleType,
     FORMAT(T.TripDate, 'yyyy-MM') AS TripMonth,
@@ -77,15 +66,13 @@ GROUP BY V.VehicleType, FORMAT(T.TripDate, 'yyyy-MM')
 ORDER BY TripMonth, V.VehicleType;
 GO
 
--- ------------------------------------------------------------
+
 -- 5. Data Integrity Audit
 --    Trips where sum of successful expenses exceeds the
 --    fuel advance given for that trip
--- ------------------------------------------------------------
+
 SELECT
-    T.TripID,
-    V.VehicleNumber,
-    T.FuelAdvanceAmount,
+    T.TripID, V.VehicleNumber, T.FuelAdvanceAmount,
     SUM(E.Amount) AS TotalSuccessfulExpense
 FROM Trips T
 INNER JOIN Vehicles V
