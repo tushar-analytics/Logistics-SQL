@@ -1,4 +1,4 @@
-# Logistics Fleet Operations — SQL Server Database
+# Logistics Operations — SQL Server Database
 
 A small T-SQL project for tracking vehicle trips and their expenses:
 which trucks/vans went where, how much fuel advance they were given,
@@ -164,10 +164,6 @@ check fails — the `CATCH` block rolls back and re-throws so the caller
 still sees the real error. `07_Testing.sql` exercises this with a
 deliberately bad `TripID` to confirm the rollback actually happens.
 
-## Screenshots
-
-See [`docs/Screenshots.md`](docs/Screenshots.md) — add your own SSMS
-result-grid screenshots to `/images` after running the scripts.
 
 ## Future Improvements
 
