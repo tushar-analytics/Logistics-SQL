@@ -1,8 +1,7 @@
-/* ============================================================
-   File        : 06_Transactions.sql
-   Purpose     : Safe expense insertion using TRY/CATCH and
-                 an explicit transaction, with rollback on error
-   ============================================================ */
+/* ==============================================================================
+   File: 06_Transactions.sql
+   Purpose : Safe expense insertion using TRY/CATCH and an explicit transaction
+   ===================================================================== */
 
 USE LogisticsFleetDB;
 GO
@@ -44,9 +43,8 @@ BEGIN
 END
 GO
 
--- ------------------------------------------------------------
+       
 -- Example usage
--- ------------------------------------------------------------
 EXEC dbo.usp_InsertExpense
     @TripID = 1,
     @ExpenseCategory = 'Fuel',
@@ -54,5 +52,5 @@ EXEC dbo.usp_InsertExpense
     @PaymentStatus = 'Success';
 GO
 
--- Example that should fail and roll back (bad TripID)
+-- Example that should fail and roll back
 -- EXEC dbo.usp_InsertExpense @TripID = 999, @ExpenseCategory = 'Fuel', @Amount = 500.00, @PaymentStatus = 'Success';
