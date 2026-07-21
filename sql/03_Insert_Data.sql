@@ -1,16 +1,15 @@
-/* ============================================================
+/* ============================================
    File        : 03_Insert_Data.sql
    Purpose     : Populate Vehicles, Trips and Expenses with
                  sample data that exercises every query in
                  04_Queries.sql
-   ============================================================ */
+   =========================================== */
 
 USE LogisticsFleetDB;
 GO
 
--- ------------------------------------------------------------
 -- Vehicles (8 rows)
--- ------------------------------------------------------------
+
 INSERT INTO Vehicles (VehicleNumber, VehicleType, RegistrationDate, Status) VALUES
 ('MH12AB1234', 'Truck', '2022-01-15', 'Active'),
 ('DL01CD5678', 'Truck', '2021-06-10', 'Active'),
@@ -22,9 +21,8 @@ INSERT INTO Vehicles (VehicleNumber, VehicleType, RegistrationDate, Status) VALU
 ('DL05OP0123', 'Truck', '2024-02-28', 'Active');
 GO
 
--- ------------------------------------------------------------
 -- Trips (14 rows) -- VehicleID references identity values 1-8
--- ------------------------------------------------------------
+
 INSERT INTO Trips (VehicleID, SourceCity, DestinationCity, TripDate, FuelAdvanceAmount) VALUES
 (1, 'Pune',    'Delhi',      '2025-01-10', 5000.00),
 (2, 'Chennai', 'Mumbai',     '2025-02-14', 6000.00),
@@ -42,9 +40,8 @@ INSERT INTO Trips (VehicleID, SourceCity, DestinationCity, TripDate, FuelAdvance
 (5, 'Delhi',   'Chandigarh', '2026-07-05', 3000.00);
 GO
 
--- ------------------------------------------------------------
 -- Expenses (26 rows) -- TripID references identity values 1-14
--- ------------------------------------------------------------
+
 INSERT INTO Expenses (TripID, ExpenseCategory, Amount, PaymentStatus) VALUES
 (1,  'Fuel',             3000.00, 'Success'),
 (1,  'Toll',             1500.00, 'Success'),
